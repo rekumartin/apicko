@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#0a0a0f;color:#e8e6f0;font-family:'Syne',sans-serif;min-height:100vh;}
+a{color:#a78bfa;text-decoration:none;}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;border-bottom:1px solid #1e1e2e;}
+.logo{font-size:1.1rem;font-weight:800;letter-spacing:-0.02em;color:#fff;}
+.logo span{color:#a78bfa;}
+.nav-links{display:flex;gap:2rem;font-size:0.85rem;color:#888;list-style:none;}
+.hero{text-align:center;padding:5rem 2rem 3rem;max-width:800px;margin:0 auto;}
+.badge{display:inline-block;background:#1a1a2e;border:1px solid #2d2d4e;border-radius:20px;padding:0.3rem 0.9rem;font-size:0.75rem;color:#a78bfa;margin-bottom:1.5rem;font-family:'JetBrains Mono',monospace;}
+h1{font-size:3.5rem;font-weight:800;line-height:1.1;letter-spacing:-0.03em;margin-bottom:1rem;}
+h1 em{color:#a78bfa;font-style:normal;}
+.hero-sub{color:#888;font-size:1rem;line-height:1.7;max-width:500px;margin:0 auto 2.5rem;}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-primary{background:#a78bfa;color:#0a0a0f;padding:0.7rem 1.6rem;border-radius:8px;font-weight:700;font-size:0.9rem;border:none;cursor:pointer;}
+.btn-outline{background:transparent;color:#e8e6f0;padding:0.7rem 1.6rem;border-radius:8px;font-weight:700;font-size:0.9rem;border:1px solid #2d2d4e;cursor:pointer;font-family:'JetBrains Mono',monospace;}
+.stats{display:flex;justify-content:center;gap:3rem;padding:2.5rem;border-top:1px solid #1e1e2e;border-bottom:1px solid #1e1e2e;margin:3rem 0;}
+.stat-num{font-size:1.8rem;font-weight:800;color:#fff;}
+.stat-label{font-size:0.8rem;color:#666;margin-top:0.2rem;}
+.section{max-width:900px;margin:0 auto;padding:0 2rem 4rem;}
+.section-title{font-size:1.5rem;font-weight:700;margin-bottom:0.4rem;}
+.section-sub{color:#666;font-size:0.85rem;margin-bottom:2rem;}
+.endpoint-card{background:#0f0f1a;border:1px solid #1e1e2e;border-radius:12px;overflow:hidden;margin-bottom:1.5rem;}
+.endpoint-header{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;cursor:pointer;user-select:none;}
+.endpoint-header:hover{background:#13131f;}
+.method{font-family:'JetBrains Mono',monospace;font-size:0.75rem;font-weight:700;padding:0.25rem 0.6rem;border-radius:5px;background:#1a3a2a;color:#4ade80;}
+.endpoint-path{font-family:'JetBrains Mono',monospace;font-size:0.9rem;color:#e8e6f0;}
+.endpoint-desc{font-size:0.8rem;color:#666;margin-left:auto;}
+.endpoint-body{border-top:1px solid #1e1e2e;padding:1.25rem;display:none;}
+.endpoint-body.open{display:block;}
+.endpoint-body p{font-size:0.85rem;color:#888;margin-bottom:1rem;}
+pre{background:#080810;border:1px solid #1a1a2e;border-radius:8px;padding:1rem;font-family:'JetBrains Mono',monospace;font-size:0.78rem;line-height:1.6;overflow-x:auto;color:#cdd6f4;}
+.k{color:#cba6f7;}.s{color:#a6e3a1;}.n{color:#89b4fa;}.num{color:#fab387;}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:4rem;}
+.feat-card{background:#0f0f1a;border:1px solid #1e1e2e;border-radius:12px;padding:1.25rem;}
+.feat-icon{font-size:1.4rem;margin-bottom:0.7rem;}
+.feat-title{font-size:0.95rem;font-weight:700;margin-bottom:0.3rem;}
+.feat-desc{font-size:0.8rem;color:#666;line-height:1.6;}
+footer{text-align:center;padding:2rem;border-top:1px solid #1e1e2e;font-size:0.8rem;color:#444;}
+.toggle-arrow{color:#666;margin-left:8px;font-size:0.8rem;transition:transform 0.2s;display:inline-block;}
+.rotated{transform:rotate(180deg);}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">Students<span>API</span></div>
+  <ul class="nav-links">
+    <li><a href="students.json" style="color:inherit;">Všetci študenti</a></li>
+    <li><a href="student/1.json" style="color:inherit;">Ukážka</a></li>
+    <li><a href="https://github.com" style="color:inherit;">GitHub</a></li>
+  </ul>
+</nav>
+<div class="hero">
+  <div class="badge">v1.0.0 — Free &amp; Open</div>
+  <h1>Jednoduchá REST API<br/>pre <em>študentské</em> dáta</h1>
+  <p class="hero-sub">Bezplatná JSON API s databázou študentov. Ideálna na učenie sa REST API, Flask a frontendového vývoja.</p>
+  <div class="hero-btns">
+    <a href="students.json"><button class="btn-primary">Zobraziť študentov</button></a>
+    <a href="student/1.json"><button class="btn-outline">GET /student/1.json</button></a>
+  </div>
+</div>
+<div class="stats">
+  <div><div class="stat-num">10</div><div class="stat-label">Študentov v databáze</div></div>
+  <div><div class="stat-num">3</div><div class="stat-label">Endpointy</div></div>
+  <div><div class="stat-num">100%</div><div class="stat-label">Zadarmo</div></div>
+  <div><div class="stat-num">JSON</div><div class="stat-label">Formát odpovede</div></div>
+</div>
+<div class="section">
+  <p class="section-title">Endpointy</p>
+  <p class="section-sub">Všetky endpointy vracajú JSON. Žiadna autentifikácia nie je potrebná.</p>
+  <div class="endpoint-card">
+    <div class="endpoint-header" onclick="toggle('e1','arr1')">
+      <span class="method">GET</span>
+      <span class="endpoint-path">/</span>
+      <span class="endpoint-desc">Privítacia stránka</span>
+      <span class="toggle-arrow" id="arr1">▼</span>
+    </div>
+    <div class="endpoint-body" id="e1">
+      <p>Vráti privítaciu HTML stránku s odkazom na API.</p>
+      <pre><span class="s">"Vitaj v mojom prvom Flask API!"</span></pre>
+    </div>
+  </div>
+  <div class="endpoint-card">
+    <div class="endpoint-header" onclick="toggle('e2','arr2')">
+      <span class="method">GET</span>
+      <span class="endpoint-path">/api &nbsp;<small style="color:#555">→ GitHub Pages: /students.json</small></span>
+      <span class="endpoint-desc">Všetci študenti</span>
+      <span class="toggle-arrow" id="arr2">▼</span>
+    </div>
+    <div class="endpoint-body" id="e2">
+      <p>Vráti pole všetkých 10 študentov vo formáte JSON.</p>
+      <pre>[
+  <span class="k">{</span>
+    <span class="n">"id"</span>: <span class="num">1</span>,
+    <span class="n">"name"</span>: <span class="s">"Adam Novák"</span>,
+    <span class="n">"age"</span>: <span class="num">20</span>,
+    <span class="n">"grade"</span>: <span class="s">"A"</span>,
+    <span class="n">"image"</span>: <span class="s">"https://i.pravatar.cc/150?img=1"</span>
+  <span class="k">}</span>, ...
+]</pre>
+    </div>
+  </div>
+  <div class="endpoint-card">
+    <div class="endpoint-header" onclick="toggle('e3','arr3')">
+      <span class="method">GET</span>
+      <span class="endpoint-path">/api/student/<span style="color:#a78bfa">{id}</span> &nbsp;<small style="color:#555">→ /student/{id}.json</small></span>
+      <span class="endpoint-desc">Jeden študent</span>
+      <span class="toggle-arrow" id="arr3">▼</span>
+    </div>
+    <div class="endpoint-body open" id="e3">
+      <p>Vráti jedného študenta podľa jeho ID. Ak neexistuje, vráti 404.</p>
+      <pre><span class="k">{</span>
+  <span class="n">"id"</span>: <span class="num">3</span>,
+  <span class="n">"name"</span>: <span class="s">"Cyril Horváth"</span>,
+  <span class="n">"age"</span>: <span class="num">19</span>,
+  <span class="n">"grade"</span>: <span class="s">"A"</span>,
+  <span class="n">"image"</span>: <span class="s">"https://i.pravatar.cc/150?img=3"</span>
+<span class="k">}</span></pre>
+    </div>
+  </div>
+  <br/>
+  <p class="section-title">Prečo Students API?</p>
+  <p class="section-sub" style="margin-bottom:1.5rem;">Všetko čo potrebuješ na učenie sa REST API.</p>
+  <div class="features">
+    <div class="feat-card"><div class="feat-icon">⚡</div><div class="feat-title">Rýchle a jednoduché</div><div class="feat-desc">Žiadna registrácia ani API kľúč. Stačí poslať GET request.</div></div>
+    <div class="feat-card"><div class="feat-icon">📦</div><div class="feat-title">Čistý JSON</div><div class="feat-desc">Každý endpoint vracia štandardný JSON. Ľahko parsovateľný v akomkoľvek jazyku.</div></div>
+    <div class="feat-card"><div class="feat-icon">🎓</div><div class="feat-title">Pre študentov</div><div class="feat-desc">Navrhnutá priamo pre školské projekty a učenie sa webového vývoja.</div></div>
+  </div>
+</div>
+<footer>StudentsAPI &mdash; vyrobené s Flask &amp; Python &mdash; open source na GitHub</footer>
+<script>
+function toggle(id,arrId){
+  document.getElementById(id).classList.toggle('open');
+  document.getElementById(arrId).classList.toggle('rotated');
+}
+</script>
+</body>
+</html>
